@@ -42,11 +42,12 @@ module Rubybot
     end
 
     #create the bot
+    puts "creating Skype and connecting"
     $skype = Skypekit::Skype.new(:keyfile => 'myskypekit.pem')
 
     $skype.start
     $skype.login(login, pass)
-
+    puts "done creating"
     
 
     trap('INT') do
