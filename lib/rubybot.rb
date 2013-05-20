@@ -20,14 +20,14 @@ module Rubybot
   require_all "plugins/*.rb"
 
 
-  def handle_message(message)
+  def Rubybot.handle_message(message)
     self.plugins.each do |plugin|
           next if !plugin.respond_to? :handle
           plugin.handle message
     end
   end
 
-  def terminate
+  def Rubybot.terminate
       puts "Terminating"
       $skype.stop
       exit
@@ -42,7 +42,7 @@ module Rubybot
     end
 
     trap('INT') do
-      terminate
+      self.terminate
     end
 
     #create the bot
@@ -84,7 +84,7 @@ module Rubybot
         p message
         puts "@" * 80
 
-        handle_message message
+        self.handle_message message
 
       end
     end
