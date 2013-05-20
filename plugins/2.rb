@@ -1,1 +1,0 @@
-$plugins.push "plugin 2";
