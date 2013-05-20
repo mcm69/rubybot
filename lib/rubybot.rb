@@ -41,6 +41,10 @@ module Rubybot
       puts "#{p.class::COMMAND}: #{p.about}"
     end
 
+    trap('INT') do
+      terminate
+    end
+
     #create the bot
     puts "creating Skype and connecting"
     $skype = Skypekit::Skype.new(:keyfile => 'myskypekit.pem')
@@ -50,9 +54,7 @@ module Rubybot
     puts "done creating"
     
 
-    trap('INT') do
-      terminate
-    end
+   
 
     #main loop
     loop do
