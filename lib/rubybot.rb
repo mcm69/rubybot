@@ -27,6 +27,12 @@ module Rubybot
     end
   end
 
+  def terminate
+      puts "Terminating"
+      $skype.stop
+      exit
+  end
+
   def Rubybot.start
     #get username and password
     login, pass = IO.readlines('login.dat')
@@ -41,11 +47,7 @@ module Rubybot
     $skype.start
     $skype.login(login, pass)
 
-    def terminate
-      puts "Terminating"
-      $skype.stop
-      exit
-    end
+    
 
     trap('INT') do
       terminate
