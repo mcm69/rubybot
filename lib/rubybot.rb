@@ -21,7 +21,6 @@ module Rubybot
 
   def Rubybot.handle_message(message)
     self.plugins.each do |plugin|
-          next if !plugin.respond_to? :handle
           plugin.handle message
     end
   end
@@ -46,11 +45,7 @@ module Rubybot
 
     @skype.start
     @skype.login(login, pass)
-    puts "done creating"
     
-
-   
-
     #main loop
     loop do
       event = @skype.get_event
@@ -73,6 +68,9 @@ module Rubybot
         end
 
       when :chat_message
+        #ignore messages we sent ourselves
+        next if message.author == login
+
         message = event.data
 
         puts "@" * 80
