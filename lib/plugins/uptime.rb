@@ -29,3 +29,5 @@ class Uptime
 		'Returns the time interval the robot has been up for.'
 	end
 end
+
+Rubybot.register_plugin Uptime.new
