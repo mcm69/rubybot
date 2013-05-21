@@ -5,7 +5,7 @@ module Pluginfactory
 		# equals to the command parameter supplied
 		# helptext and about are just strings which will be the return values of same-named methods of the defined class
 		cls = Class.new(Object) do 
-			define_method(:handler) do |message|
+			define_method(:handle) do |message|
 				return unless message.body[0,command.length+1] == Rubybot::COMMAND_SYMBOL + command
 				handlerblock.call message
 			end
