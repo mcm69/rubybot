@@ -4,7 +4,7 @@ pluginlist = Pluginfactory.create('help', 'returns list of currently loaded plug
 	if(args)
 		#display help text for a particular command
 		cmd = Rubybot::COMMAND_SYMBOL+args
-		plugin = Rubybot.plugins.find {plugin.class::COMMAND == cmd}
+		plugin = Rubybot.plugins.find {|p| p.command == cmd}
 		if plugin
 			response = "#{cmd}: #{plugin.helptext}"
 		else

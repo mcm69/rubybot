@@ -36,7 +36,7 @@ module Rubybot
     login, pass = IO.read("login.dat").split($/)
 
     self.plugins.each do |p|
-      puts "#{p.class::COMMAND}: #{p.about}"
+      puts "#{p.command}: #{p.about}"
     end
 
     #create the bot

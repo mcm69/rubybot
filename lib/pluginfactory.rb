@@ -15,6 +15,8 @@ module Pluginfactory
 			define_method(:helptext) { helptextmsg }
 
 			define_method(:about) { aboutmsg }
+
+			define_method(:command) {cmd}
 		end
 
 		cls.const_set("COMMAND", cmd)
