@@ -69,9 +69,8 @@ module Rubybot
 
       when :chat_message
         #ignore messages we sent ourselves
-        next if message.author == login
-
         message = event.data
+        next if message.author == login
 
         puts "@" * 80
         p message
