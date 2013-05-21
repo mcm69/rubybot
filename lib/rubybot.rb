@@ -1,8 +1,10 @@
 require "./helpers.rb"
+require "./pluginfactory.rb"
 require 'skypekit'
 
 module Rubybot
   class << self; attr_accessor :plugins; end
+  class << self; attr_accessor :skype; end
 
   COMMAND_SYMBOL = '-'
 
@@ -29,28 +31,24 @@ module Rubybot
 
   def Rubybot.terminate
       puts "Terminating"
-      $skype.stop
+      @skype.stop
       exit
   end
 
   def Rubybot.start
     #get username and password
-    login, pass = IO.readlines('login.dat')
+    login, pass = IO.read("login.dat").split($/)
 
     self.plugins.each do |p|
       puts "#{p.class::COMMAND}: #{p.about}"
     end
 
-    trap('INT') do
-      self.terminate
-    end
-
     #create the bot
     puts "creating Skype and connecting user #{login}"
-    $skype = Skypekit::Skype.new(:keyfile => 'myskypekit.pem')
+    @skype = Skypekit::Skype.new(:keyfile => 'myskypekit.pem')
 
-    $skype.start
-    $skype.login(login, pass)
+    @skype.start
+    @skype.login(login, pass)
     puts "done creating"
     
 
@@ -58,7 +56,7 @@ module Rubybot
 
     #main loop
     loop do
-      event = $skype.get_event
+      event = @skype.get_event
 
       unless event
         sleep 2
@@ -90,5 +88,10 @@ module Rubybot
     end
   end
 end
+
+trap('INT') do
+      Rubybot.terminate
+end
+
 
 Rubybot.start
