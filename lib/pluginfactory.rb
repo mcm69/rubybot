@@ -15,6 +15,8 @@ module Pluginfactory
 			define_method(:about) { aboutmsg }
 		end
 
+		cls.const_set("COMMAND", command)
+
 		cls.new
 	end
 end
