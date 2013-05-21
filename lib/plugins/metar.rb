@@ -1,7 +1,7 @@
 require 'metar'
 
 metar = Pluginfactory.create('metar', 'current weather for an airport given an ICAO code', 'aviation weather report') do |message|
-	args = message.args
+	args = message.body.args
 	response = ''
 	if(!args)
 		response = 'metar: No airport code provided'
