@@ -13,7 +13,7 @@ metar = Pluginfactory.create('metar', 'current weather for an airport given an I
 		else
 			report = station.report.to_s
 			raw = station.parser.raw.to_s
-			response = "METAR #{raw}\n\nreport"
+			response = "METAR #{raw}\n\n#{report}"
 		end
 	end
 
