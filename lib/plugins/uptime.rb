@@ -6,7 +6,7 @@ class Uptime
 	end
 
 	def handle(message)
-		return unless message.body.is_command(COMMAND)
+		return unless message.body.is_command? COMMAND
 
 		elapsed = Time.now - @start
 		seconds = (elapsed%60).to_i
