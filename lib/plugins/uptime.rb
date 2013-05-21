@@ -9,10 +9,10 @@ class Uptime
 		return unless message.body.is_command(COMMAND)
 
 		elapsed = Time.now - @start
-		seconds = elapsed%60
-		minutes = elapsed/60%60
-		hours = elapsed/3600%24
-		days = elapsed/3600.to_i
+		seconds = (elapsed%60).to_i
+		minutes = (elapsed/60%60).to_i
+		hours = (elapsed/3600%24).to_i
+		days = (elapsed/86400).to_i
 
 		Rubybot.skype.send_chat_message(message.convo_id, "robot uptime: #{days}d #{hours}h #{minutes}m #{seconds}s, running since #{@start}")	
 	end
