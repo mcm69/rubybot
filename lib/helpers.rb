@@ -5,7 +5,7 @@ end
 
 class String
 	def is_command?(command)
-		self == command || self.start_with? command + ' '
+		self == command || (self.start_with? command + ' ')
 	end
 
 	def args
