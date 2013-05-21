@@ -13,9 +13,6 @@ module Rubybot
   #init plugins
 
   def Rubybot.register_plugin(plugin)
-    if !(plugin.respond_to?(:handle) && plugin.respond_to?(:about) && plugin.respond_to?(:helptext))
-      raise NoMethodError
-    end
     self.plugins.push plugin
   end
 
