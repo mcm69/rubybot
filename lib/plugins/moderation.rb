@@ -6,10 +6,10 @@ class Moderation
 	SILENCE_COMMAND = Rubybot::COMMAND_SYMBOL + 'silence'
 	ADD_COMMAND = Rubybot::COMMAND_SYMBOL + 'add'
 
-	COMMANDS = [KICK_COMMAND, KICKBAN_COMMAND, PROMOTE_COMMAND, DEMOTE_COMMAND, SILENCE_COMMAND, ADD_COMMAND]
+	COMMAND = [KICK_COMMAND, KICKBAN_COMMAND, PROMOTE_COMMAND, DEMOTE_COMMAND, SILENCE_COMMAND, ADD_COMMAND]
 
 	def handle(message)
-		return unless message.body.is_command? COMMANDS
+		return unless message.body.is_command? COMMAND
 
 		if !Rubybot::Config.is_admin? message.author
 			Rubybot.skype.send_chat_message(message.convo_id, "You do not have permissions to use this command, #{message.author_displayname}!")
