@@ -12,6 +12,11 @@ class String
 		false
 	end
 
+	def command
+		return self unless self.include? ' '
+		self.split(' ', 2)[0]
+	end
+
 	def args
 		self.split(' ', 2)[1]
 	end
