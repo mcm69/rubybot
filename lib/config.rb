@@ -6,6 +6,9 @@ module Rubybot
 		#bot admins. have access to commands that use is_admin? but not is_creator?
 		BOT_ADMINS = []
 
+		#timeout (in minutes) for incoming messages. used to ignore old logs slipping through
+		MESSAGE_TIMEOUT = 2
+
 		def Config.is_creator? (user)
 			user == BOT_CREATOR
 		end

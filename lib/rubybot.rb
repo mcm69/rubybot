@@ -73,9 +73,12 @@ module Rubybot
         message = event.data
         next if message.author == login
 
-        puts "@" * 80
-        p message
-        puts "@" * 80
+        timeout = Time.now - message.sent_at
+        next if timeout > Rubybot::Config.MESSAGE_TIMEOUT*60
+
+        #puts "@" * 80
+        #p message
+        #puts "@" * 80
 
         self.handle_message message
 
