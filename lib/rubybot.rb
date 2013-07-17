@@ -1,5 +1,6 @@
 require "./helpers.rb"
 require "./pluginfactory.rb"
+require "./config.rb"
 require 'skypekit'
 
 module Rubybot
