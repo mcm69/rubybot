@@ -5,7 +5,11 @@ end
 
 class String
 	def is_command?(command)
-		self == command || (self.start_with? command + ' ')
+		commands = [*command]
+		commands.each do |cmd|
+			return true if self == cmd || (self.start_with? cmd + ' ')
+		end
+		false
 	end
 
 	def args
